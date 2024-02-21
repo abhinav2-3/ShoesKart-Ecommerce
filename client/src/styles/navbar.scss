@@ -1,0 +1,179 @@
+nav {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $light;
+    padding-inline: 3rem;
+    text-transform: uppercase;
+
+    >h1>a {
+        font: 800 1.8rem $text;
+    }
+}
+
+.mainNav {
+    display: none;
+    width: 50vw;
+    height: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    >a {
+        font: 500 1rem $text;
+        transition: all 0.5s;
+        position: relative;
+        z-index: 1;
+
+        &:hover {
+            font-weight: 600;
+        }
+
+        >svg {
+            font-size: 1.4rem;
+        }
+
+        >span {
+            position: absolute;
+            top: -11px;
+            right: -12px;
+            background-color: $secondary;
+            color: $white;
+            border-radius: 50%;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    }
+
+    >.btn {
+        width: 7rem;
+        padding: 0.7rem 1.3rem;
+    }
+}
+
+.pageNavigation {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $light;
+
+    >a {
+        font-size: 1.7rem;
+    }
+
+    >span {
+        font-size: 1.7rem;
+    }
+}
+
+.menu-btn {
+    width: 3vw;
+    height: 4vh;
+    display: grid;
+    place-items: center;
+    display: block;
+    cursor: pointer;
+
+    >svg {
+        font-size: 1.5rem;
+    }
+}
+
+.phoneNav {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: $primary;
+    position: relative;
+    top: 8rem;
+    right: -25vw;
+    padding: 1rem 0;
+    z-index: 100;
+    border-radius: 4px;
+
+    >a {
+        color: $white;
+
+        >svg {
+            font-size: 1.5rem;
+        }
+    }
+
+    >.btn {
+        width: 6rem;
+        font-size: 0.7rem;
+        height: 2rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+@media only screen and (min-width: 996px) {
+    .mainNav {
+        display: flex;
+    }
+
+    .phoneNav,
+    .menu-btn {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 996px) and (max-width:1200px) {
+    nav {
+        >div {
+            width: 55vw;
+            height: 2vw;
+
+            >a {
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width:701px) and (max-width:995px) {
+    nav {
+        padding: 0 1rem;
+
+        >h1>a {
+            font: 800 1.5rem $text;
+        }
+
+    }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 700px) {
+    .menu-btn {
+        display: block;
+    }
+
+    .phoneNav {
+        border: 1px solid red;
+        width: 40%;
+        right: 1vw;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .menu-btn {
+        display: block;
+    }
+
+    nav {
+        padding: 0 1rem;
+
+        >h1>a {
+            font-size: 1.5rem;
+        }
+    }
+
+    .phoneNav {
+        width: 50%;
+        right: 1vw;
+    }
+}

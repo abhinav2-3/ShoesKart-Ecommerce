@@ -1,0 +1,198 @@
+.featureProducts {
+    margin-top: 6rem;
+    padding: 0 $p_lg;
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: $white;
+    justify-content: center;
+
+    >span {
+        color: gray;
+        text-transform: capitalize;
+        font-weight: 700;
+    }
+
+    >h3 {
+        font: 500 1.8rem $text;
+    }
+
+    >div {
+        display: flex;
+        gap: 2rem;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+    }
+
+}
+
+.navProduct {
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 30vh;
+    transition: all 0.5s;
+    border-radius: 5px;
+
+    &:hover {
+        box-shadow: 0px 0px 20px $primary;
+    }
+
+    >figure {
+        width: 100%;
+        height: 25vh;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.5s linear;
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 100%;
+            top: 0;
+            right: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: all 0.3s linear;
+            cursor: pointer;
+        }
+
+        &:hover::after {
+            width: 100%;
+        }
+
+        &:hover img {
+            transform: scale(1.2);
+            transform: rotate(30deg);
+        }
+
+        >img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s linear;
+
+            &:hover {
+                transform: rotate(30deg) scale(1.3);
+            }
+
+        }
+
+        >figcaption {
+            font: 400 0.8rem $text;
+            background-color: $secondary;
+            border-radius: 5px;
+            text-transform: uppercase;
+            position: absolute;
+            color: $white;
+            z-index: 1;
+            top: 15px;
+            right: 25px;
+            padding: 5px 12px;
+        }
+    }
+
+    >div {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        align-items: center;
+        text-transform: uppercase;
+
+        >h3 {
+            font: 500 1rem $text;
+        }
+
+        >p {
+            font: 400 1rem $text;
+            color: $primary;
+        }
+    }
+}
+
+@media only screen and (min-width: 993px) and (max-width:1200px) {
+    .featureProducts {
+        padding: 0 $p_md;
+    }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 700px) {
+    .featureProducts {
+        padding: 0 $p_zero;
+
+        >h3 {
+            font-size: 1.5rem;
+        }
+    }
+
+    .navProduct {
+        height: 35vh;
+
+        >figure {
+            height: 30vh;
+
+            >figcaption {
+                font-size: 0.7rem;
+                padding: 3px 8px;
+            }
+        }
+
+        >div {
+            flex-direction: column;
+            justify-content: unset;
+            align-items: flex-start;
+            padding: 0 8px;
+
+            >h3 {
+                font-size: 0.8rem;
+                font-weight: 600;
+            }
+
+            >p {
+                font-size: 0.9rem;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .featureProducts {
+        padding: 0 $p_zero;
+        height: unset;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        >h3 {
+            font-size: 1.3rem;
+        }
+
+        >div {
+            justify-content: center;
+        }
+    }
+
+    .navProduct {
+        width: 90%;
+
+        >div {
+            flex-direction: column;
+
+            >h3 {
+                font-size: 1.1rem;
+                font-weight: 600;
+            }
+
+            >p {
+                font-size: 1.1rem;
+                font-weight: 500;
+            }
+        }
+    }
+}

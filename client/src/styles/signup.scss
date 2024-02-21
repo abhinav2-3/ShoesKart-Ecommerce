@@ -1,0 +1,103 @@
+.signup {
+    padding: 0 $p_lg;
+    display: flex;
+    width: 70%;
+    margin: 2rem auto;
+    align-items: center;
+    flex-direction: column;
+
+    >h2 {
+        font: 800 1.8rem $text;
+        text-transform: uppercase;
+    }
+
+    >form {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin: 1rem 0;
+
+        >label {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        >input {
+            padding: 0.5rem 2rem;
+            font-size: 1rem;
+            border-radius: 6px;
+            border: 1px solid black;
+            color: rgb(36, 36, 36);
+            outline: none;
+        }
+
+        >div {
+            display: flex;
+            justify-content: flex-end;
+            margin: 0.8rem 0;
+            font: 500 1rem $text;
+        }
+
+        >button {
+            margin-top: 1rem;
+        }
+    }
+}
+
+@media only screen and (min-width: 993px) and (max-width:1200px) {
+    .signup {
+        padding: 0 $p_md;
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width:701px) and (max-width:995px) {
+    .signup {
+        padding: 0 $p_md;
+        width: 90%;
+
+        >form {
+            width: 70%;
+        }
+    }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 700px) {
+    .signup {
+        padding: 0 $p_sm;
+        width: 90%;
+
+        >form {
+            width: 70%;
+
+            >label {
+                width: 1rem;
+            }
+
+            >div {
+                justify-content: center;
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .signup {
+        padding: 0 $p_zero;
+        width: 90%;
+
+        >form {
+            width: 70%;
+
+            >label {
+                width: 1rem;
+            }
+
+            >div {
+                justify-content: center;
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

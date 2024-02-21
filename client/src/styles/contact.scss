@@ -1,0 +1,76 @@
+.contact {
+    width: 100%;
+    margin: 4rem 0;
+
+    >div {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        width: 100%;
+        align-items: center;
+
+        >h1 {
+            font: 600 1.8rem $text;
+        }
+
+        >form {
+            padding-inline: $p_lg;
+            display: flex;
+            width: 50vw;
+            flex-direction: column;
+            gap: 2rem;
+
+            >input,
+            textarea {
+                border: 2px solid rgb(158, 158, 158);
+                outline: none;
+                padding: 1rem;
+                border-radius: 5px;
+                font-size: 1rem;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 993px) and (max-width:1200px) {
+    .contact {
+        >div>form {
+            padding: 0 $p_md;
+            width: 50vw;
+        }
+    }
+}
+
+@media only screen and (min-width:701px) and (max-width:995px) {
+    .contact {
+        margin: 2rem 0;
+
+        >div>form {
+            padding: 0 $p_md;
+            width: 70vw;
+        }
+    }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 700px) {
+    .contact {
+        margin: 2rem 0;
+
+        >div>form {
+            padding: 0 $p_sm;
+            width: 100vw;
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .contact {
+        margin-top: 2rem;
+
+        >div>form {
+            padding: 0 $p_zero;
+            width: 90vw;
+        }
+    }
+}

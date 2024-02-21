@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap');
+@import './static.scss';
+@import './navbar.scss';
+@import './home.scss';
+@import './herosection.scss';
+@import './featuredProducts.scss';
+@import './services.scss';
+@import './companies.scss';
+@import './footer.scss';
+@import './errorpage.scss';
+@import './contact.scss';
+@import './products.scss';
+@import './filter.scss';
+@import './singleProduct.scss';
+@import './myImage.scss';
+@import './cart.scss';
+@import './signup.scss';
+@import './myOrder.scss';
+@import './loader.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $white;
+  color: $black;
+}
+
+::selection {
+  color: $white;
+  background-color: $black;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}

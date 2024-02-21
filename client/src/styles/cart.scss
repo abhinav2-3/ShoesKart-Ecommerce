@@ -1,0 +1,333 @@
+.cart {
+    width: 100%;
+    height: unset;
+    padding: 0 $p_lg;
+    margin: 2rem auto;
+
+    >.table {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+
+        >p {
+            font: 500 1rem $text;
+            padding: 10px;
+            text-align: center
+        }
+    }
+
+    >.productDetail {
+        width: 100%;
+        position: relative;
+
+        >div {
+            display: flex;
+            margin: 1rem 0;
+
+            >.prod_data {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+                width: 23%;
+
+                >img {
+                    border: 1px solid $black;
+                    width: 4rem;
+                    height: 4rem;
+                    object-fit: contain;
+                }
+
+                >aside {
+                    margin: 5px 0;
+
+                    >span {
+                        font-weight: 500;
+                        text-transform: capitalize;
+                    }
+                }
+            }
+
+            >.price {
+                width: 18%;
+                display: grid;
+                place-items: center;
+                font-weight: 500;
+            }
+
+            >.cartToggle {
+                display: grid;
+                place-items: center;
+                width: 20%;
+            }
+
+            >.button {
+                display: grid;
+                place-items: center;
+                width: 20%;
+
+                >svg {
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    color: red;
+
+                    &:hover {
+                        transform: scale(1.2);
+                    }
+                }
+            }
+        }
+
+        >.two-btns {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+
+            >a>button {
+                width: 12rem;
+                padding: 0.5rem 1rem;
+            }
+
+            >button {
+                background-color: red;
+                width: 10rem;
+
+                &:hover {
+                    border: 2px solid red;
+                    color: red;
+                    background-color: transparent;
+                    transform: scale(1);
+                }
+            }
+        }
+
+        >.total {
+            position: relative;
+            bottom: 1rem;
+            right: -63%;
+            display: flex;
+            width: 33%;
+            border-radius: 5px;
+            gap: 10px;
+            flex-direction: column;
+            background-color: rgb(243, 243, 243);
+            margin-top: 3rem;
+            padding: 2rem;
+
+            >p>span {
+                font-weight: 600;
+            }
+        }
+    }
+
+}
+
+.noData {
+    width: 100%;
+    height: 50vh;
+    display: grid;
+    place-items: center;
+
+    >h3 {
+        font: 400 3rem $text;
+        text-transform: uppercase;
+    }
+}
+
+@media only screen and (min-width: 993px) and (max-width:1200px) {
+    .cart {
+        width: 0 $p_md;
+
+        >.productDetail {
+            >.total {
+                width: 37%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width:701px) and (max-width:995px) {
+    .cart {
+        padding: 0 $p_md;
+
+        .productDetail {
+            >div {
+                >.prod_data {
+                    width: 28%;
+                }
+            }
+
+            >.total {
+                width: 50%;
+                right: -50%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 700px) {
+    .cart {
+        padding: 0 $p_sm;
+
+        >.table {
+            grid-template-columns: repeat(4, 1fr);
+
+            >p {
+                font-size: 0.8rem;
+
+                &:nth-child(4) {
+                    display: none;
+                }
+            }
+        }
+
+        >.productDetail {
+            >div {
+                margin: 0.5rem 0;
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+
+                >.prod_data {
+                    width: 100%;
+
+                    >img {
+                        display: none;
+                    }
+
+                    >aside>span {
+                        font-size: 0.8rem;
+                    }
+                }
+
+                >.price {
+                    width: 100%;
+                    font-size: 0.8rem;
+                }
+
+                >.subtotal {
+                    display: none;
+                }
+
+                >.cartToggle {
+                    width: 100%;
+
+                    .qty {
+                        >span {
+                            font-size: 1rem;
+                        }
+
+                        >button {
+                            font-size: 0.9rem;
+                        }
+                    }
+                }
+
+                >.button {
+                    width: 100%;
+                }
+            }
+
+            >.two-btns {
+                >a>.btn {
+                    width: 7rem;
+                    padding: 0.4rem;
+                }
+
+                >.btn {
+                    width: 8rem;
+                    padding: 0.5rem;
+                }
+            }
+
+            >.total {
+                width: 90%;
+                right: -10%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .cart {
+        padding: 0 $p_zero;
+
+        >.table {
+            grid-template-columns: repeat(4, 1fr);
+
+            >p {
+                font-size: 0.8rem;
+
+                &:nth-child(4) {
+                    display: none;
+                }
+            }
+        }
+
+        >.productDetail {
+            >div {
+                margin: 0.5rem 0;
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+
+                >.prod_data {
+                    width: 100%;
+
+                    >img {
+                        display: none;
+                    }
+
+                    >aside>span {
+                        font-size: 0.8rem;
+                    }
+                }
+
+                >.price {
+                    width: 100%;
+                    font-size: 0.8rem;
+                }
+
+                >.subtotal {
+                    display: none;
+                }
+
+                >.cartToggle {
+                    width: 100%;
+
+                    .qty {
+                        >span {
+                            font-size: 1rem;
+                        }
+
+                        >button {
+                            font-size: 0.9rem;
+                        }
+                    }
+                }
+
+                >.button {
+                    width: 100%;
+                }
+            }
+
+            >.two-btns {
+                >a>.btn {
+                    width: 7rem;
+                    padding: 0.4rem;
+                }
+
+                >.btn {
+                    width: 8rem;
+                    padding: 0.5rem;
+                }
+            }
+
+            >.total {
+                width: 90%;
+                right: -10%;
+            }
+        }
+    }
+}

@@ -1,0 +1,54 @@
+$light: #EEEDEB;
+$white: #FFFFFF;
+$black: #000814;
+$primary: #003566;
+$secondary: #d90429;
+
+$p_lg: 10rem;
+$p_md: 6rem;
+$p_sm: 3rem;
+$p_zero: 1rem;
+
+$text: "Poppins";
+
+.btn {
+    background-color: $secondary;
+    color: $white;
+    width: 9rem;
+    height: 3rem;
+    margin-top: 0;
+    display: grid;
+    place-items: center;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 1rem 1.3rem;
+    transition: all 0.3s;
+    text-transform: uppercase;
+
+    &:hover {
+        background-color: $primary;
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    transition: all 0.4s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $secondary;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $primary;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
