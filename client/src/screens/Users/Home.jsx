@@ -1,8 +1,8 @@
 import React from "react";
-import Herosection from "../compoenents/Herosection";
-import Companies from "../compoenents/Companies";
-import Services from "../compoenents/Services";
-import FeaturedProducts from "../compoenents/FeaturedProducts";
+import Herosection from "../../compoenents/Herosection";
+import Companies from "../../compoenents/Companies";
+import Services from "../../compoenents/Services";
+import FeaturedProducts from "../../compoenents/FeaturedProducts";
 
 const Home = () => {
   const data = {

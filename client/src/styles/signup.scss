@@ -6,10 +6,7 @@
     align-items: center;
     flex-direction: column;
 
-    >h2 {
-        font: 800 1.8rem $text;
-        text-transform: uppercase;
-    }
+
 
     >form {
         display: flex;
@@ -40,6 +37,16 @@
 
         >button {
             margin-top: 1rem;
+        }
+
+        >aside {
+            >label {
+                width: 50%;
+
+                >input {
+                    display: none;
+                }
+            }
         }
     }
 }

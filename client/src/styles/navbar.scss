@@ -8,7 +8,7 @@ nav {
     padding-inline: 3rem;
     text-transform: uppercase;
 
-    >h1>a {
+    >a {
         font: 800 1.8rem $text;
     }
 }
@@ -54,6 +54,38 @@ nav {
     }
 }
 
+.phoneNav {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: $primary;
+    position: relative;
+    top: 8rem;
+    right: -25vw;
+    padding: 1rem 0;
+    z-index: 100;
+    border-radius: 4px;
+    height: 30vh;
+    justify-content: space-around;
+
+    >a {
+        color: $white;
+
+        >svg {
+            font-size: 1.5rem;
+        }
+    }
+
+    >.btn {
+        width: 6rem;
+        font-size: 0.7rem;
+        height: 2rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
 .pageNavigation {
     display: flex;
     justify-content: flex-start;
@@ -82,35 +114,7 @@ nav {
     }
 }
 
-.phoneNav {
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: $primary;
-    position: relative;
-    top: 8rem;
-    right: -25vw;
-    padding: 1rem 0;
-    z-index: 100;
-    border-radius: 4px;
 
-    >a {
-        color: $white;
-
-        >svg {
-            font-size: 1.5rem;
-        }
-    }
-
-    >.btn {
-        width: 6rem;
-        font-size: 0.7rem;
-        height: 2rem;
-        padding: 0.4rem 0.8rem;
-    }
-}
 
 @media only screen and (min-width: 996px) {
     .mainNav {

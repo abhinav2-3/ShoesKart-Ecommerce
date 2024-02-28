@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import { FaCircleUser } from "react-icons/fa6";
 const Login = () => {
   useEffect(() => {
     const auth = localStorage.getItem("authToken");
@@ -14,6 +14,13 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setLoginData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleLogin = async () => {
     try {
@@ -55,41 +62,46 @@ const Login = () => {
       });
     }
   };
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setLoginData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
 
   return (
-    <div className="signup">
+    <div className="profile login">
       <Toaster />
-      <h2>Login</h2>
+      <h1>Login</h1>
       <form>
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={loginData.email}
-          onChange={handleChange}
-        />
-
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={loginData.password}
-          onChange={handleChange}
-        />
-        <div>
-          Are You a New User !! <NavLink to={"/signup"}> Sign Up </NavLink>{" "}
-        </div>
+        <aside>
+          <div>
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="example23@emailcom"
+              value={loginData.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="xyzabc"
+              value={loginData.password}
+              onChange={handleChange}
+            />
+          </div>
+        </aside>
+        <figure>
+          <FaCircleUser />
+        </figure>
+      </form>
+      <div>
+        <span>
+          If you are New !! <NavLink to={"/signup"}>Signup</NavLink>
+        </span>
         <button type="button" className="btn" onClick={handleLogin}>
           Login
         </button>
-      </form>
+      </div>
     </div>
   );
 };

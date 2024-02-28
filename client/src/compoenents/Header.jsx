@@ -4,36 +4,32 @@ import { FaShoppingCart } from "react-icons/fa";
 import { useCartContext } from "../context/CartContext";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
+import Dropdown from "./Dropdown";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
   const auth = localStorage.getItem("authToken");
   const location = useLocation();
-  const logoutHandler = () => {
-    localStorage.clear();
-  };
+
   const isLoginPage = location.pathname === "/login";
   const isSignupPage = location.pathname === "/signup";
   const { cart } = useCartContext();
+
   return (
     <nav>
-      <h1>
-        <NavLink to={"/"}>ShoesKart.</NavLink>
-      </h1>
-      <div className={menu === true ? "phoneNav" : "mainNav"}>
+      <NavLink to={"/"}>ShoesKart.</NavLink>
+
+      <div className={menu ? "phoneNav" : "mainNav"}>
         <NavLink to={"/"}>Home</NavLink>
         <NavLink to={"/about"}>About</NavLink>
         <NavLink to={"/products"}>Products</NavLink>
         {auth ? (
           <>
             <NavLink to={"/contact"}>Contact</NavLink>
-            <NavLink to={"/myOrders"}>My Orders</NavLink>
+            <Dropdown />
             <NavLink to={"/cart"}>
               <FaShoppingCart />
               {cart.length > 0 && <span className="badge">{cart.length}</span>}
-            </NavLink>
-            <NavLink to={"/"} className="btn" onClick={logoutHandler}>
-              Log Out
             </NavLink>
           </>
         ) : isLoginPage ? (

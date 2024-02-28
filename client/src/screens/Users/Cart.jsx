@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import CartAmountToggle from "../compoenents/CartAmountToggle";
-import { useCartContext } from "../context/CartContext";
-import FormatPrice from "../compoenents/FormatPrice";
+import CartAmountToggle from "../../compoenents/CartAmountToggle";
+import { useCartContext } from "../../context/CartContext";
+import FormatPrice from "../../compoenents/FormatPrice";
 import { MdDelete } from "react-icons/md";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";

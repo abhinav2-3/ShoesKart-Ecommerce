@@ -1,9 +1,10 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import Avatar from "../models/avatarModel.js";
 
 export const signup = async (req, res) => {
-  const { name, email, number, address, password, image } = req.body;
+  const { name, email, number, address, password } = req.body;
 
   if (!name || !email || !password || !address || !number) {
     return res.status(400).json({ error: "Missing required fields" });
@@ -22,7 +23,6 @@ export const signup = async (req, res) => {
       password: hashedPassword,
       address,
       number,
-      image,
     });
 
     const authToken = jwt.sign({ userId: user.id }, process.env.SECRET_KEY);
@@ -54,5 +54,36 @@ export const login = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const updateAvatar = async (req, res) => {
+  const avatarName = req.file.filename;
+  const { username } = req.body;
+
+  try {
+    await Avatar.create({ avatarName, username });
+    return res.status(201).json({ success: true, message: "uploaded" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const getAvatar = async (req, res) => {
+  try {
+    const image = await Avatar.find({});
+    if (!image) {
+      console.log("Image not found");
+      return res
+        .status(404)
+        .json({ success: false, message: "Image not found" });
+    }
+    return res.status(201).json({ success: true, image });
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal server error" });
   }
 };

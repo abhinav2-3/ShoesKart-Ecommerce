@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import FormatPrice from "../compoenents/FormatPrice";
-import FormatDate from "../compoenents/DateFormat";
+import FormatPrice from "../../compoenents/FormatPrice";
+import FormatDate from "../../compoenents/DateFormat";
 
 const MyOrder = () => {
   const [orderData, setOrderData] = useState([]);
