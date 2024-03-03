@@ -25,7 +25,7 @@ export const signup = async (req, res) => {
       number,
     });
 
-    const authToken = jwt.sign({ userId: user.id }, process.env.SECRET_KEY);
+    const authToken = jwt.sign({ userId: user.id },thisisecommercewebsite);
 
     return res.status(201).json({ success: true, authToken, user });
   } catch (error) {
@@ -48,7 +48,7 @@ export const login = async (req, res) => {
 
     const authToken = jwt.sign(
       { userId: existingUser.id },
-      process.env.SECRET_KEY
+      thisisecommercewebsite
     );
     return res.status(201).json({ success: true, authToken, existingUser });
   } catch (error) {
