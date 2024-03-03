@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import Avatar from "../models/avatarModel.js";
 
+const SECRET_KEY = "thisisecommercewebsite";
+
 export const signup = async (req, res) => {
   const { name, email, number, address, password } = req.body;
 
@@ -25,7 +27,7 @@ export const signup = async (req, res) => {
       number,
     });
 
-    const authToken = jwt.sign({ userId: user.id },thisisecommercewebsite);
+    const authToken = jwt.sign({ userId: user.id },SECRET_KEY);
 
     return res.status(201).json({ success: true, authToken, user });
   } catch (error) {
@@ -48,7 +50,7 @@ export const login = async (req, res) => {
 
     const authToken = jwt.sign(
       { userId: existingUser.id },
-      thisisecommercewebsite
+      SECRET_KEY
     );
     return res.status(201).json({ success: true, authToken, existingUser });
   } catch (error) {
