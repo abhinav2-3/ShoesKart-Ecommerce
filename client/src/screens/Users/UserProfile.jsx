@@ -19,7 +19,7 @@ const UserProfile = () => {
       formData.append("username", username);
 
       const response = await axios.post(
-        "http://localhost:8000/upload-avatar",
+        "https://shoes-bond.onrender.com/upload-avatar",
         formData,
         {
           headers: {
@@ -34,7 +34,7 @@ const UserProfile = () => {
 
   // const getAvatar = async () => {
   //   try {
-  //     const response = await axios.get("http://localhost:8000/get-avatar", {
+  //     const response = await axios.get("https://shoes-bond.onrender.com//get-avatar", {
   //       headers: {
   //         "Content-Type": "application/json",
   //       },

@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import CartAmountToggle from "../../compoenents/CartAmountToggle";
 import { useCartContext } from "../../context/CartContext";
 import FormatPrice from "../../compoenents/FormatPrice";
@@ -17,136 +17,181 @@ const Cart = () => {
     shipping_fee,
     clearCart,
   } = useCartContext();
-  const userId = localStorage.getItem("userId");
-  const toastSuccess = () => {
-    toast.success("Order Placed Successfully");
-    clearCart();
-  };
-  const placeOrder = () => {
-    [...cart].forEach(async (item) => {
-      try {
-        await axios.post(
-          "https://shoes-bond.onrender.com/orders",
-          {
+
+  const API_SET_ORDER = "https://shoes-bond.onrender.com/orders";
+  const API_CHEKOUT_ORDER = "https://shoes-bond.onrender.com/checkout";
+  const API_GET_KEY = "https://shoes-bond.onrender.com/getkey";
+  const API_VALIDATE = "https://shoes-bond.onrender.com/validate";
+
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const authUser = localStorage.getItem("authUser");
+    setUser(JSON.parse(authUser));
+  }, []);
+
+  const placeOrder = async () => {
+    try {
+      await Promise.all(
+        cart.map(async (item) => {
+          await axios.post(API_SET_ORDER, {
             name: item.name,
             imageURL: item.image,
             amount: item.amount,
             price: item.price * item.amount,
-            userId,
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-      } catch (err) {
-        if (!err?.response) {
-          toast("No Server Response", {
-            duration: 2000,
+            userId: user._id,
           });
-        } else if (err.response?.status === 409) {
-          toast.error("Already Registered with this Email");
-        } else {
-          toast("Login Failed\n\nTry After Sometime", {
-            duration: 2000,
-          });
-        }
-      }
-    });
-    toast.success("aas;ldf", { duration: "10s" });
+        })
+      );
+      clearCart();
+      navigate("/myOrders", { replace: true });
+    } catch (error) {
+      console.error("Error placing order:", error);
+      toast.error("Failed to place order");
+    }
   };
-  if (cart.length > 0) {
-    return (
-      <section className="cart">
-        <Toaster />
-        <div className="table">
-          <p>Item</p>
-          <p>Price</p>
-          <p>Quantity</p>
-          <p>SubTotal</p>
-          <p>Remove</p>
-        </div>
-        <hr />
-        <section className="productDetail">
-          {cart.map((currElem) => {
-            return (
-              <div key={currElem.id}>
+
+  const checkout = async () => {
+    try {
+      const {
+        data: { key },
+      } = await axios.get(API_GET_KEY);
+
+      const response = await axios.post(API_CHEKOUT_ORDER, {
+        total_price,
+      });
+
+      // Razorpay Configurations
+
+      const options = {
+        key,
+        amount: response.data.order.amount,
+        currency: "INR",
+        name: `${user.name.split(" ")[0]}'s Cart`,
+        description: `${
+          user.name.split(" ")[0]
+        }'s Transaction is under Processing...`,
+        image:
+          "https://as1.ftcdn.net/v2/jpg/03/15/06/10/1000_F_315061039_JPz3A8Yd64Ugsy2T6Ez6E9IPwAhs3ftD.jpg",
+        order_id: response.data.order.id,
+        handler: async function (response) {
+          const body = { ...response };
+          const validateRes = await axios.post(API_VALIDATE, body);
+          if (validateRes) {
+            await placeOrder(cart);
+          }
+        },
+        prefill: {
+          name: user.name,
+          email: user.email,
+          contact: user.number,
+        },
+        notes: {
+          address: user.address,
+        },
+        theme: {
+          color: "#d90429",
+        },
+      };
+
+      const razor = new window.Razorpay(options);
+      razor.on("payment.failed", function (response) {
+        toast.error("Payment Failed");
+        console.log(response);
+      });
+      razor.open();
+
+      toast.success("Order is processing...");
+    } catch (error) {
+      console.error("Error during checkout:", error);
+      toast.error("Failed to checkout");
+    }
+  };
+
+  return (
+    <section className="cart">
+      <Toaster />
+      {cart.length > 0 ? (
+        <>
+          <div className="table">
+            <p>Item</p>
+            <p>Price</p>
+            <p>Quantity</p>
+            <p>SubTotal</p>
+            <p>Remove</p>
+          </div>
+          <hr />
+          <section className="productDetail">
+            {cart.map((item) => (
+              <div key={item.id}>
                 <div className="prod_data">
-                  <img src={currElem.image} alt={currElem.name} />
+                  <img src={item.image} alt={item.name} />
                   <aside>
-                    <span>{currElem.name}</span>
+                    <span>{item.name}</span>
                   </aside>
                 </div>
                 <p className="price">
-                  <FormatPrice price={currElem.price} />
+                  <FormatPrice price={item.price} />
                 </p>
                 <div className="cartToggle">
                   <CartAmountToggle
-                    amount={currElem.amount}
-                    increment={() => increment(currElem.id)}
-                    decrement={() => decrement(currElem.id)}
+                    amount={item.amount}
+                    increment={() => increment(item.id)}
+                    decrement={() => decrement(item.id)}
                   />
                 </div>
                 <p className="price subtotal">
-                  <FormatPrice price={currElem.price * currElem.amount} />
+                  <FormatPrice price={item.price * item.amount} />
                 </p>
                 <p className="button">
-                  <MdDelete onClick={() => removeProduct(currElem.id)} />
+                  <MdDelete onClick={() => removeProduct(item.id)} />
                 </p>
               </div>
-            );
-          })}
-          <hr />
-          <div className="two-btns">
-            <NavLink to={"/products"}>
-              <button className="btn">Continue Shopping</button>
-            </NavLink>
-            <button
-              className="btn"
-              onClick={() => {
-                placeOrder(cart);
-                toastSuccess();
-              }}
-            >
-              Place Order
-            </button>
-          </div>
-          <div className="total">
-            <p>
-              SubTotal :
-              <span>
-                <FormatPrice price={total_price} />
-              </span>
-            </p>
-            <p>
-              Shipping Charge :{" "}
-              <span>
-                {total_price > 600000 ? (
-                  0
-                ) : (
-                  <FormatPrice price={shipping_fee} />
-                )}
-              </span>
-            </p>
+            ))}
             <hr />
-            <p>
-              Total :{" "}
-              <span>
-                <FormatPrice price={total_price} />
-              </span>
-            </p>
-          </div>
-        </section>
-      </section>
-    );
-  } else {
-    return (
-      <div className="noData">
-        <h3>Cart is Empty!!</h3>
-      </div>
-    );
-  }
+            <div className="two-btns">
+              <NavLink to={"/products"}>
+                <button className="btn">Continue Shopping</button>
+              </NavLink>
+              <button className="btn" onClick={checkout}>
+                Place Order
+              </button>
+            </div>
+            <div className="total">
+              <p>
+                SubTotal :{" "}
+                <span>
+                  <FormatPrice price={total_price} />
+                </span>
+              </p>
+              <p>
+                Shipping Charge :{" "}
+                <span>
+                  {total_price > 600000 ? (
+                    0
+                  ) : (
+                    <FormatPrice price={shipping_fee} />
+                  )}
+                </span>
+              </p>
+              <hr />
+              <p>
+                Total :{" "}
+                <span>
+                  <FormatPrice price={total_price} />
+                </span>
+              </p>
+            </div>
+          </section>
+        </>
+      ) : (
+        <div className="noData">
+          <h3>Cart is Empty!!</h3>
+        </div>
+      )}
+    </section>
+  );
 };
 
 export default Cart;

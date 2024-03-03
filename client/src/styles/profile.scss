@@ -81,3 +81,87 @@
 .login>form>aside {
     justify-content: center;
 }
+
+@media only screen and (min-width: 993px) and (max-width:1200px) {
+    .profile {
+        padding: 0 $p_md;
+    }
+}
+
+@media only screen and (min-width:701px) and (max-width:995px) {
+    .profile {
+        padding: 0 $p_md;
+
+        >form {
+            flex-direction: column;
+
+            >aside {
+                width: 100%;
+
+                >div {
+                    width: 100%;
+                }
+
+                >button {
+                    width: 100%;
+                }
+            }
+
+            >figure {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 700px) {
+    .profile {
+        padding: 0 $p_sm;
+
+        >form {
+            flex-direction: column;
+
+            >aside {
+                width: 100%;
+
+                >div {
+                    width: 100%;
+                }
+
+                >button {
+                    width: 100%;
+                }
+            }
+
+            >figure {
+                display: none;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .profile {
+        padding: 0 $p_zero;
+
+        >form {
+            flex-direction: column;
+
+            >aside {
+                width: 100%;
+
+                >div {
+                    width: 100%;
+                }
+
+                >button {
+                    width: 100%;
+                }
+            }
+
+            >figure {
+                display: none;
+            }
+        }
+    }
+}

@@ -14,20 +14,22 @@ import ErrorPage from "./compoenents/ErrorPage";
 import Contacts from "./screens/Users/Contacts";
 import MyOrder from "./screens/Users/MyOrder";
 import UserProfile from "./screens/Users/UserProfile";
-import Dashboard from "./screens/Admin/Dashboard";
-import AdminProducts from "./screens/Admin/AdminProducts";
-import Profile from "./screens/Admin/Profile";
-import ManageProducts from "./screens/Admin/ManageProducts";
+import { Toaster, toast } from "react-hot-toast";
 
 function App() {
-  useEffect(() => {
-    alert(
-      "Please wait a moment while we fetch the data from server. Thank you for your patience."
+  const notify = () =>
+    toast.loading(
+      "Please wait a moment while we fetch the data from server. Thank you for your patience.",
+      { duration: 5000 }
     );
+
+  useEffect(() => {
+    notify();
   }, []);
 
   return (
     <Router>
+      <Toaster />
       <Header />
       <Routes>
         {/* USER ROUTES */}
@@ -43,12 +45,6 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<ErrorPage />} />
-
-        {/* ADMIN ROUTES */}
-        <Route path="/admin/dashboard" element={<Dashboard />} />
-        <Route path="/admin/products" element={<AdminProducts />} />
-        <Route path="/admin/profile" element={<Profile />} />
-        <Route path="/admin/product/:id" element={<ManageProducts />} />
       </Routes>
       <Footer />
     </Router>

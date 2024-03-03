@@ -5,21 +5,7 @@ import {
   signup,
   updateAvatar,
 } from "../controllers/userControls.js";
-// import upload from "../middleware/multerMiddleware.js";
-// import { upload } from "../middleware/multerMiddleware.js";
-import multer from "multer";
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "../client/src/assets");
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now();
-    cb(null, uniqueSuffix + file.originalname);
-  },
-});
-
-const upload = multer({ storage });
+import { upload } from "../middleware/multerMiddleware.js";
 
 const router = express.Router();
 
