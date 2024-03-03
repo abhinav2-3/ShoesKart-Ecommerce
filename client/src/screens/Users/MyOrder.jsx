@@ -9,8 +9,12 @@ const API_CLEAR_ORDERS = "https://shoes-bond.onrender.com/clearOrders";
 
 const MyOrder = () => {
   const [orderData, setOrderData] = useState([]);
-  const userId = localStorage.getItem("userId");
   const [loading, setLoading] = useState(true);
+  const authUser = localStorage.getItem("authUser");
+
+  const user = JSON.parse(authUser);
+  const userId = user._id;
+
 
   const myOrders = async () => {
     try {
