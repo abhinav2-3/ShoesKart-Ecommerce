@@ -42,17 +42,10 @@ export const getOrders = async (req, res) => {
 export const clearOrders = async (req, res) => {
   const { userId } = req.body;
   try {
-    const deletedOrders = await Order.deleteMany({ userId });
+    await Order.deleteMany({ userId });
 
-    if (deletedOrders.deletedCount > 0) {
-      return res
-        .status(200)
-        .json({ message: "Order history cleared successfully" });
-    } else {
-      return res
-        .status(404)
-        .json({ message: "No orders found for the given user" });
-    }
+    const delOrders = await Order.find({ userId });
+    return res.json(delOrders);
   } catch (error) {
     console.error("Error clearing orders:", error);
     return res.status(500).send("Internal Server Error");
