@@ -26,7 +26,8 @@ const Signup = () => {
       [name]: value,
     }));
   };
-  const handleSignUp = async () => {
+
+    const handleSignUp = async () => {
     try {
       const response = await axios.post(
         "https://shoes-bond.onrender.com/signup",
@@ -63,6 +64,7 @@ const Signup = () => {
       }
     }
   };
+
 
   return (
     <div className="profile">
