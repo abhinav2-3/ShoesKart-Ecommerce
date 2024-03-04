@@ -37,10 +37,13 @@ const Signup = () => {
           },
         }
       );
-      if (response.status === 201 && response.data.success) {
+
+      if (response.data.success) {
         localStorage.setItem("authToken", response.data.authToken);
         localStorage.setItem("authUser", JSON.stringify(response.data.user));
         navigate("/");
+      } else {
+        toast.error("Signup failed");
       }
     } catch (err) {
       console.error("Error:", err);

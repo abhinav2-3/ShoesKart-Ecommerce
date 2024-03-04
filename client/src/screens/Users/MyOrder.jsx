@@ -9,8 +9,11 @@ const API_CLEAR_ORDERS = "https://shoes-bond.onrender.com/clearOrders";
 
 const MyOrder = () => {
   const [orderData, setOrderData] = useState([]);
-  const userId = localStorage.getItem("userId");
   const [loading, setLoading] = useState(true);
+  const authUser = localStorage.getItem("authUser");
+
+  const user = JSON.parse(authUser);
+  const userId = user._id;
 
   const myOrders = async () => {
     try {
@@ -24,22 +27,23 @@ const MyOrder = () => {
   };
 
   const clearOrderHistory = async () => {
+    setLoading(true);
     try {
       const response = await axios.post(API_CLEAR_ORDERS, { userId });
       setOrderData(response.data);
       toast.success("Order History Cleared");
     } catch (error) {
       handleApiError(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleApiError = (error) => {
     if (!error?.response) {
       toast("No Server Response", { duration: 2000 });
-    } else if (error.response?.status === 409) {
-      toast.error("Already Registered with this Email");
     } else {
-      toast("Login Failed\n\nTry After Sometime", { duration: 2000 });
+      toast("Server Failed\n\nTry After Sometime", { duration: 2000 });
     }
   };
 
