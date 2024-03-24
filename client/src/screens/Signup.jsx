@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
+import { API_SIGNUP } from "../utils/APIs";
 
 const Signup = () => {
   useEffect(() => {
@@ -27,17 +28,9 @@ const Signup = () => {
     }));
   };
 
-    const handleSignUp = async () => {
+  const handleSignUp = async () => {
     try {
-      const response = await axios.post(
-        "https://shoes-bond.onrender.com/signup",
-        signupData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post(API_SIGNUP, signupData);
 
       if (response.data.success) {
         localStorage.setItem("authToken", response.data.authToken);
@@ -64,7 +57,6 @@ const Signup = () => {
       }
     }
   };
-
 
   return (
     <div className="profile">

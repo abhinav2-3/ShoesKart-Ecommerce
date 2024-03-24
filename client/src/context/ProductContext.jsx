@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useReducer } from "react";
 import axios from "axios";
 import reducer from "../reducer/productReducer";
+import { API_GET_PRODUCTS } from "../utils/APIs";
 
 const AppContext = createContext();
 
@@ -32,7 +33,7 @@ const AppProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getProducts(API);
+    getProducts(API_GET_PRODUCTS);
   }, []);
 
   return (

@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/iframe-has-title */
-import React from "react";
 const Contacts = () => {
   const authUser = localStorage.getItem("authUser");
   const user = JSON.parse(authUser);

@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
+import { API_LOGIN } from "../utils/APIs";
 const Login = () => {
   useEffect(() => {
     const auth = localStorage.getItem("authToken");
@@ -24,15 +25,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(
-        "https://shoes-bond.onrender.com/login",
-        loginData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post(API_LOGIN, loginData);
       if (response.status === 201) {
         localStorage.setItem("authToken", response.data.authToken);
         localStorage.setItem(

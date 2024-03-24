@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { FaCircleUser } from "react-icons/fa6";
+import axios from "axios";
+import { API_UPLOAD_AVATAR } from "../utils/APIs";
 
 const UserProfile = () => {
   let authUser = localStorage.getItem("authUser");
@@ -18,15 +19,7 @@ const UserProfile = () => {
       formData.append("image", image);
       formData.append("username", username);
 
-      const response = await axios.post(
-        "https://shoes-bond.onrender.com/upload-avatar",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post(API_UPLOAD_AVATAR, formData);
     } catch (error) {
       console.error("Error uploading image:", error);
     }

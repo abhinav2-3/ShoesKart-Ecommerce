@@ -1,7 +1,6 @@
-import React from "react";
-import Filter from "../../compoenents/Filter";
-import ProductList from "../../compoenents/ProductList";
-import Sort from "../../compoenents/Sort";
+import Filter from "../compoenents/Filter";
+import ProductList from "../compoenents/ProductList";
+import Sort from "../compoenents/Sort";
 
 const Products = () => {
   return (

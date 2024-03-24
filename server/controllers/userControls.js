@@ -27,11 +27,7 @@ export const signup = async (req, res) => {
       number,
     });
 
-<<<<<<< HEAD
     const authToken = jwt.sign({ userId: user.id }, SECRET_KEY);
-=======
-    const authToken = jwt.sign({ userId: user.id },SECRET_KEY);
->>>>>>> 62c811eaa0a9d1139ae5ab63f98ed2e9ab4cde23
 
     return res.status(201).json({ success: true, authToken, user });
   } catch (error) {
@@ -52,14 +48,7 @@ export const login = async (req, res) => {
     if (!isMatch)
       return res.status(401).json({ error: "Password is Incorrect" });
 
-<<<<<<< HEAD
     const authToken = jwt.sign({ userId: existingUser.id }, SECRET_KEY);
-=======
-    const authToken = jwt.sign(
-      { userId: existingUser.id },
-      SECRET_KEY
-    );
->>>>>>> 62c811eaa0a9d1139ae5ab63f98ed2e9ab4cde23
     return res.status(201).json({ success: true, authToken, existingUser });
   } catch (error) {
     console.log(error);

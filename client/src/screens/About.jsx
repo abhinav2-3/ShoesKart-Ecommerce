@@ -1,5 +1,4 @@
-import React from "react";
-import Herosection from "../../compoenents/Herosection";
+import Herosection from "../compoenents/Herosection";
 
 const About = () => {
   const data = {

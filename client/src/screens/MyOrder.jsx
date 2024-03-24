@@ -1,11 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import FormatPrice from "../../compoenents/FormatPrice";
-import FormatDate from "../../compoenents/DateFormat";
-
-const API_GET_ORDERS = "https://shoes-bond.onrender.com/getOrders";
-const API_CLEAR_ORDERS = "https://shoes-bond.onrender.com/clearOrders";
+import FormatPrice from "../compoenents/FormatPrice";
+import FormatDate from "../compoenents/DateFormat";
+import { API_CLEAR_ORDERS, API_GET_ORDERS } from "../utils/APIs";
 
 const MyOrder = () => {
   const [orderData, setOrderData] = useState([]);
@@ -14,6 +12,10 @@ const MyOrder = () => {
 
   const user = JSON.parse(authUser);
   const userId = user._id;
+
+  useEffect(() => {
+    myOrders();
+  }, []);
 
   const myOrders = async () => {
     try {
@@ -47,10 +49,6 @@ const MyOrder = () => {
     }
   };
 
-  useEffect(() => {
-    myOrders();
-  }, []);
-
   return (
     <section className="myOrder">
       <Toaster />
@@ -67,7 +65,7 @@ const MyOrder = () => {
             fontSize: "1.7rem",
           }}
         >
-          <h5> You Haven't Order Anything Yet !!</h5>
+          <h5> You Haven&apos;t Order Anything Yet !!</h5>
         </div>
       ) : (
         <>

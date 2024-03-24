@@ -1,19 +1,19 @@
 import "./styles/App.scss";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./screens/Users/Home";
+import Home from "./screens/Home";
 import Header from "./compoenents/Header";
 import Footer from "./compoenents/Footer";
-import About from "./screens/Users/About";
-import SingleProduct from "./screens/Users/SingleProduct";
-import Signup from "./screens/Users/Signup";
-import Login from "./screens/Users/Login";
-import Products from "./screens/Users/Products";
-import Cart from "./screens/Users/Cart";
+import About from "./screens/About";
+import SingleProduct from "./screens/SingleProduct";
+import Signup from "./screens/Signup";
+import Login from "./screens/Login";
+import Products from "./screens/Products";
+import Cart from "./screens/Cart";
 import ErrorPage from "./compoenents/ErrorPage";
-import Contacts from "./screens/Users/Contacts";
-import MyOrder from "./screens/Users/MyOrder";
-import UserProfile from "./screens/Users/UserProfile";
+import Contacts from "./screens/Contacts";
+import MyOrder from "./screens/MyOrder";
+import UserProfile from "./screens/UserProfile";
 import { Toaster, toast } from "react-hot-toast";
 
 function App() {
