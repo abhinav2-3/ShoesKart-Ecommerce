@@ -1,5 +1,5 @@
 import express from "express";
-import { shoesList } from "../controllers/dataControl.js";
+import { addShoe, shoesList } from "../controllers/dataControl.js";
 import {
   checkout,
   clearOrders,
@@ -18,5 +18,7 @@ dataRoutes.post("/clearOrders", clearOrders);
 dataRoutes.post("/checkout", checkout);
 dataRoutes.post("/validate", validate);
 dataRoutes.get("/getkey", getKey);
+
+dataRoutes.post("/add_product", addShoe);
 
 export default dataRoutes;

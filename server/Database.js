@@ -6,7 +6,7 @@ export const database = () => {
     .then(async () => {
       console.log("DB is connected");
       const shoes = await mongoose.connection.db
-        .collection("shoes-list")
+        .collection("shoes_list")
         .find()
         .toArray();
       global.shoesData = shoes;
