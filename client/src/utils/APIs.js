@@ -16,4 +16,4 @@ export const API_GET_AVATAR = URL + "get-avatar";
 export const LOGO =
   "https://as1.ftcdn.net/v2/jpg/03/15/06/10/1000_F_315061039_JPz3A8Yd64Ugsy2T6Ez6E9IPwAhs3ftD.jpg";
 
-export const API_ADD_SHOES = "http://localhost:8000/add_product";
+export const API_ADD_SHOES = URL + "add_product";
