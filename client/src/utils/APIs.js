@@ -1,5 +1,5 @@
-// const URL = "https://shoes-bond.onrender.com/";
-const URL = "http://localhost:8000/";
+const URL = "https://shoes-bond.onrender.com/";
+// const URL = "http://localhost:8000/";
 
 export const API_GET_PRODUCTS = URL + "api_items";
 export const API_SET_ORDER = URL + "orders";
