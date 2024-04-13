@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import FormatPrice from "../compoenents/FormatPrice";
-import FormatDate from "../compoenents/DateFormat";
+import FormatPrice from "../components/FormatPrice";
+import FormatDate from "../components/DateFormat";
 import { API_CLEAR_ORDERS, API_GET_ORDERS } from "../utils/APIs";
 
 const MyOrder = () => {

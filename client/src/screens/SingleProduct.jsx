@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import PageNavigation from "../compoenents/PageNavigation";
-import MyImages from "../compoenents/MyImages";
-import FormatPrice from "../compoenents/FormatPrice";
+import PageNavigation from "../components/PageNavigation";
+import MyImages from "../components/MyImages";
+import FormatPrice from "../components/FormatPrice";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import { MdOutlineSecurity } from "react-icons/md";
-import Rating from "../compoenents/Rating";
-import AddToCart from "../compoenents/AddToCart";
+import Rating from "../components/Rating";
+import AddToCart from "../components/AddToCart";
 
 const SingleProduct = () => {
   const { state } = useLocation();

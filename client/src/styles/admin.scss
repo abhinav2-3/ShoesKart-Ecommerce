@@ -1,0 +1,59 @@
+.admin {
+    width: 100%;
+    height: 100%;
+    padding: 1rem $p_lg;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2rem;
+
+
+    >div {
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        align-items: self-start;
+        padding: 0 5rem;
+
+        >ul {
+            display: flex;
+            flex-direction: column;
+
+            &:first-of-type {
+                display: flex;
+                width: 25%;
+                gap: 1.6rem;
+                margin-top: 5px;
+
+                >label {
+                    font-size: 1.2rem;
+                    font-weight: 600;
+
+                    &:nth-child(5) {
+                        height: 12rem;
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+            }
+
+            &:last-of-type {
+                gap: 1rem;
+                width: 60%;
+
+                >input {
+                    outline: none;
+                    border: 1px solid gray;
+                    padding: 0.5rem 1rem;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+
+    >button {
+        width: 12rem;
+        font-size: 1rem;
+        height: 3.4rem;
+    }
+}

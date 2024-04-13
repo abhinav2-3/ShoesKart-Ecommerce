@@ -1,6 +1,6 @@
-import Filter from "../compoenents/Filter";
-import ProductList from "../compoenents/ProductList";
-import Sort from "../compoenents/Sort";
+import Filter from "../components/Filter";
+import ProductList from "../components/ProductList";
+import Sort from "../components/Sort";
 
 const Products = () => {
   return (

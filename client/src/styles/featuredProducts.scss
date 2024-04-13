@@ -49,6 +49,7 @@
         position: relative;
         overflow: hidden;
         transition: all 0.5s linear;
+        border-radius: 5px;
 
         &::after {
             content: "";
@@ -68,7 +69,7 @@
         }
 
         &:hover img {
-            transform: scale(1.2);
+            transform: scale(1.5);
             transform: rotate(30deg);
         }
 
@@ -79,7 +80,7 @@
             transition: transform 0.3s linear;
 
             &:hover {
-                transform: rotate(30deg) scale(1.3);
+                transform: rotate(30deg) scale(1.5);
             }
 
         }

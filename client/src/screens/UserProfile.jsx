@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import axios from "axios";
 import { API_UPLOAD_AVATAR } from "../utils/APIs";
@@ -20,6 +20,7 @@ const UserProfile = () => {
       formData.append("username", username);
 
       const response = await axios.post(API_UPLOAD_AVATAR, formData);
+      console.log(response);
     } catch (error) {
       console.error("Error uploading image:", error);
     }

@@ -1,4 +1,3 @@
-import React from "react";
 import { useProductContext } from "../context/ProductContext";
 import Product from "./Product";
 import Loader from "./Loader";

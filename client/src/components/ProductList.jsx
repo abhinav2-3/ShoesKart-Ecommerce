@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useFilterContext } from "../context/FilterContext";
 import Product from "./Product";
 import Loader from "./Loader";

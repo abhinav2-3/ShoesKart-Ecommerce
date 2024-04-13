@@ -1,4 +1,4 @@
-import Herosection from "../compoenents/Herosection";
+import Herosection from "../components/Herosection";
 
 const About = () => {
   const data = {

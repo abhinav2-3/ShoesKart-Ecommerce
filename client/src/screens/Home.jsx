@@ -1,7 +1,7 @@
-import Herosection from "../compoenents/Herosection";
-import Companies from "../compoenents/Companies";
-import Services from "../compoenents/Services";
-import FeaturedProducts from "../compoenents/FeaturedProducts";
+import Herosection from "../components/Herosection";
+import Companies from "../components/Companies";
+import Services from "../components/Services";
+import FeaturedProducts from "../components/FeaturedProducts";
 
 const Home = () => {
   const data = {

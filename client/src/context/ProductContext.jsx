@@ -1,11 +1,10 @@
-import React, { createContext, useContext, useEffect, useReducer } from "react";
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useEffect, useReducer } from "react";
 import axios from "axios";
 import reducer from "../reducer/productReducer";
 import { API_GET_PRODUCTS } from "../utils/APIs";
 
 const AppContext = createContext();
-
-const API = "https://shoes-bond.onrender.com/api_items";
 
 const initialState = {
   isLoading: false,
@@ -14,6 +13,7 @@ const initialState = {
   featureProducts: [],
 };
 
+// eslint-disable-next-line react/prop-types
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -25,7 +25,7 @@ const AppProvider = ({ children }) => {
           "content-type": "application/josn",
         },
       });
-      const products = await response.data;
+      const products = await response?.data?.shoesData;
       dispatch({ type: "SET_API_DATA", payload: products });
     } catch (error) {
       dispatch({ type: "API_ERROR" });

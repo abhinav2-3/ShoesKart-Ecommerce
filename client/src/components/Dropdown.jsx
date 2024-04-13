@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
@@ -37,6 +37,7 @@ const Dropdown = () => {
           <Link to="/myOrders" onClick={closer}>
             My Orders
           </Link>
+          <Link to="/admin">Add Shoes</Link>
           <Link to="/login" onClick={logoutHandler}>
             Log out
           </Link>
