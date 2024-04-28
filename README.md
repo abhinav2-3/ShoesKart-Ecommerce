@@ -50,16 +50,24 @@ Welcome to the Shoe Store E-commerce Website, a full-stack web application built
 To run the Shoe Store E-commerce Website locally, follow these steps:
 
 1. Clone the repository:
+   ``
    git clone https://github.com/your-username/shoe-store.git
+   ``
 
 2. Navigate to the project directory:
+  ``
    cd shoe-store
+   ``
 
 3. Install dependencies for the frontend and backend:
+   ``
    cd client
    npm install
+   ``
+   ``
    cd ../server
    npm install
+   ``
 
 4. Set up environment variables:
 
@@ -67,10 +75,14 @@ To run the Shoe Store E-commerce Website locally, follow these steps:
 - Add environment variables such as database connection URI, JWT secret key, and Stripe API keys.
 
 5. Run the backend server:
+  ``
    npm start
+   ``
 
 6. Run the frontend development server:
+   ``
    cd ../client
    npm run dev
+   ``
 
 7. Open your browser and navigate to `http://localhost:5173` to view the Shoe Store
