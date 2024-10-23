@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useEffect, useReducer } from "react";
+/* eslint-disable react/prop-types */
+import { createContext, useContext, useEffect, useReducer } from "react";
 import reducer from "../reducer/cartReducer";
 import toast from "react-hot-toast";
 

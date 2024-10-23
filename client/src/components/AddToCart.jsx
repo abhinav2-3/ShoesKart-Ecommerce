@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 import CartAmountToggle from "./CartAmountToggle";
 import { useCartContext } from "../context/CartContext";
 import { Toaster } from "react-hot-toast";
 
 const AddToCart = ({ product }) => {
-  const { id, countInStock } = product;
+  const id = product._id;
+  const countInStock = product.countInStock;
 
   const [amount, setAmount] = useState(1);
 

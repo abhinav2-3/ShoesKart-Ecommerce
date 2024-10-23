@@ -19,9 +19,9 @@ const initialState = {
   },
 };
 
+// eslint-disable-next-line react/prop-types
 const FilterProvider = ({ children }) => {
   const { products } = useProductContext();
-  console.log(products);
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
