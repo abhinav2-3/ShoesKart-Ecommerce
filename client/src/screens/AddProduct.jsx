@@ -1,7 +1,8 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useState } from "react";
-import { API_ADD_SHOES } from "../utils/APIs";
+import { API_ADD_SHOES, API_GET_PRODUCTS } from "../utils/APIs";
+import { useProductContext } from "../context/ProductContext";
 
 const AddProduct = () => {
   const [productDetails, setProductDetails] = useState({
@@ -15,7 +16,7 @@ const AddProduct = () => {
     reviews: 0,
     price: 0,
   });
-
+  const { getProducts } = useProductContext();
   const inputHandleChange = (e, index) => {
     const { name, value } = e.target;
     if (name === "image") {
@@ -50,6 +51,7 @@ const AddProduct = () => {
           reviews: 0,
           price: 0,
         });
+        await getProducts(API_GET_PRODUCTS);
       }
     } catch (error) {
       toast.error("Error while Adding the Shoe");
