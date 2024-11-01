@@ -5,6 +5,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
 import { API_LOGIN } from "../utils/APIs";
 const Login = () => {
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const auth = localStorage.getItem("authToken");
     if (auth) navigate("/");
@@ -25,6 +26,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
+      setLoading(true);
       const response = await axios.post(API_LOGIN, loginData);
       if (response.status === 201) {
         localStorage.setItem("authToken", response.data.authToken);
@@ -34,8 +36,10 @@ const Login = () => {
         );
         localStorage.setItem("userId", response.data.existingUser._id);
         navigate("/");
+        setLoading(false);
       }
     } catch (err) {
+      setLoading(false);
       if (!err?.response) {
         toast("No Server Response", {
           duration: 2000,
@@ -91,9 +95,20 @@ const Login = () => {
         <span>
           If you are New !! <NavLink to={"/signup"}>Signup</NavLink>
         </span>
-        <button type="button" className="btn" onClick={handleLogin}>
-          Login
-        </button>
+        {loading ? (
+          <button type="button" className="btn" disabled={loading}>
+            Loading...
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="btn"
+            onClick={handleLogin}
+            disabled={loading}
+          >
+            Login
+          </button>
+        )}
       </div>
     </div>
   );

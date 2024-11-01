@@ -6,6 +6,7 @@ import { FaCircleUser } from "react-icons/fa6";
 import { API_SIGNUP } from "../utils/APIs";
 
 const Signup = () => {
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const auth = localStorage.getItem("user");
     if (auth) navigate("/");
@@ -30,16 +31,19 @@ const Signup = () => {
 
   const handleSignUp = async () => {
     try {
+      setLoading(true);
       const response = await axios.post(API_SIGNUP, signupData);
 
       if (response.data.success) {
         localStorage.setItem("authToken", response.data.authToken);
         localStorage.setItem("authUser", JSON.stringify(response.data.user));
+        setLoading(false);
         navigate("/");
       } else {
         toast.error("Signup failed");
       }
     } catch (err) {
+      setLoading(false);
       console.error("Error:", err);
 
       if (err.response) {
@@ -116,10 +120,20 @@ const Signup = () => {
               onChange={handleChange}
             />
           </div>
-
-          <button type="button" className="btn" onClick={handleSignUp}>
-            Sign Up
-          </button>
+          {loading ? (
+            <button type="button" className="btn" disabled={loading}>
+              Loading...
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="btn"
+              onClick={handleSignUp}
+              disabled={loading}
+            >
+              Login
+            </button>
+          )}
         </aside>
 
         <figure>
