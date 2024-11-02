@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { createContext, useContext, useEffect, useReducer } from "react";
 import reducer from "../reducer/cartReducer";
@@ -32,7 +33,6 @@ const CartProvider = ({ children }) => {
   };
 
   const placeOrder = (cart) => {
-    console.log(cart);
     return dispatch({ type: "PLACE_ORDER", payload: cart });
   };
   const clearCart = () => {

@@ -5,7 +5,7 @@ import { API_UPLOAD_AVATAR } from "../utils/APIs";
 
 const UserProfile = () => {
   let authUser = localStorage.getItem("authUser");
-  let username = JSON.parse(authUser);
+  let user = JSON.parse(authUser);
 
   const [image, setImage] = useState(null);
   // const [allImage, setAllImage] = useState(null);
@@ -17,7 +17,7 @@ const UserProfile = () => {
     try {
       const formData = new FormData();
       formData.append("image", image);
-      formData.append("username", username);
+      formData.append("username", user);
 
       const response = await axios.post(API_UPLOAD_AVATAR, formData);
       console.log(response);
@@ -26,20 +26,6 @@ const UserProfile = () => {
     }
   };
 
-  // const getAvatar = async () => {
-  //   try {
-  //     const response = await axios.get("https://shoes-bond.onrender.com//get-avatar", {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-  //     setAllImage(response.data.image);
-  //     console.log(allImage);
-  //   } catch (error) {
-  //     console.error("Error uploading image:", error);
-  //   }
-  // };
-
   return (
     <div className="profile">
       <h1>Your Profile</h1>
@@ -47,22 +33,37 @@ const UserProfile = () => {
         <aside>
           <div>
             <label>Your Name</label>
-            <input type="text" name="name" />
+            <input type="text" name="name" value={user?.name} />
           </div>
 
           <div>
             <label>Email</label>
-            <input type="email" name="email" placeholder="example23@emailcom" />
+            <input
+              type="email"
+              name="email"
+              placeholder="example23@emailcom"
+              value={user?.email}
+            />
           </div>
 
           <div>
             <label>Number</label>
-            <input type="number" name="number" placeholder="1112223330" />
+            <input
+              type="number"
+              name="number"
+              placeholder="1112223330"
+              value={user?.number}
+            />
           </div>
 
           <div>
             <label>Address</label>
-            <input type="text" name="address" placeholder="Your Full Address" />
+            <input
+              type="text"
+              name="address"
+              placeholder="Your Full Address"
+              value={user?.address}
+            />
           </div>
 
           <div>

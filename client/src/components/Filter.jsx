@@ -1,4 +1,3 @@
-import React from "react";
 import { useFilterContext } from "../context/FilterContext";
 import FormatPrice from "./FormatPrice";
 

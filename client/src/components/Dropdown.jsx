@@ -37,7 +37,9 @@ const Dropdown = () => {
           <Link to="/myOrders" onClick={closer}>
             My Orders
           </Link>
-          <Link to="/admin">Add Shoes</Link>
+          <Link to="/admin" onClick={closer}>
+            Add Shoes
+          </Link>
           <Link to="/login" onClick={logoutHandler}>
             Log out
           </Link>

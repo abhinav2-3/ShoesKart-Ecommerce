@@ -14,7 +14,7 @@ export const createOrders = async (req, res) => {
       userId,
     });
     await order.save();
-    return res.status(201).json(order);
+    return res.status(201).json({ success: true });
   } catch (error) {
     console.error(error);
     return res.status(500).send("Internal Server Error");

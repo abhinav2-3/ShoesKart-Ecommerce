@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { useCartContext } from "../context/CartContext";
@@ -10,16 +10,21 @@ const Header = () => {
   const [menu, setMenu] = useState(false);
   const auth = localStorage.getItem("authToken");
   const location = useLocation();
-
   const isLoginPage = location.pathname === "/login";
   const isSignupPage = location.pathname === "/signup";
   const { cart } = useCartContext();
 
+  const toggleDropdown = () => {
+    setMenu(false);
+  };
+
   return (
     <nav>
-      <NavLink to={"/"}>ShoesKart.</NavLink>
+      <NavLink to={"/"} onClick={toggleDropdown}>
+        ShoesKart.
+      </NavLink>
 
-      <div className={menu ? "phoneNav" : "mainNav"}>
+      <div className={menu ? "phoneNav" : "mainNav"} onClick={toggleDropdown}>
         <NavLink to={"/"}>Home</NavLink>
         <NavLink to={"/about"}>About</NavLink>
         <NavLink to={"/products"}>Products</NavLink>
