@@ -11,9 +11,9 @@ const AddProduct = () => {
     brand: "",
     category: "",
     image: ["", "", "", ""],
-    countInStock: 1,
-    rating: 0,
-    reviews: 0,
+    countInStock: 8,
+    rating: 3.6,
+    reviews: 49,
     price: 0,
   });
   const { getProducts } = useProductContext();
@@ -103,7 +103,7 @@ const AddProduct = () => {
             name="category"
             value={productDetails.category}
           />
-          {productDetails.image.map((imageUrl, index) => (
+          {productDetails.image.map((_, index) => (
             <input
               key={index}
               onChange={(e) => inputHandleChange(e, index)}

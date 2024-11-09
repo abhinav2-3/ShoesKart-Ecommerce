@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useFilterContext } from "../context/FilterContext";
 import FormatPrice from "./FormatPrice";
 
@@ -8,12 +9,18 @@ const Filter = () => {
     all_Products,
     clearFilter,
   } = useFilterContext();
+  const [active, setActive] = useState("All");
 
   const getUniqueData = (data, property) => {
     let newVal = data.map((currElem) => {
       return currElem[property];
     });
     return (newVal = ["All", ...new Set(newVal)]);
+  };
+
+  const filterBtn = (currElem, e) => {
+    setActive(currElem);
+    updateFilterValue(e);
   };
 
   const categoryData = getUniqueData(all_Products, "category");
@@ -38,9 +45,9 @@ const Filter = () => {
               type="button"
               name="category"
               value={currElem}
-              onClick={updateFilterValue}
+              onClick={(e) => filterBtn(currElem, e)}
             >
-              {currElem}
+              {active === currElem ? <b>{currElem}</b> : currElem}
             </button>
           );
         })}

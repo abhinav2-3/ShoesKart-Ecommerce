@@ -10,6 +10,10 @@ export const shoesList = async (req, res) => {
   }
 };
 
+function capitalizeFirstLetter(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
 export const addShoe = async (req, res) => {
   const {
     name,
@@ -23,17 +27,18 @@ export const addShoe = async (req, res) => {
     price,
   } = req.body;
   try {
-    await shoes_list.create({
+    const shoe = new shoes_list({
       name,
       description,
-      brand,
-      category,
+      brand: capitalizeFirstLetter(brand),
+      category: capitalizeFirstLetter(category),
       image,
       countInStock,
       rating,
       reviews,
       price: price * 100,
     });
+    await shoe.save();
     return res.status(201).json({ success: true, message: "Product is Added" });
   } catch (error) {
     return res.status(500).json({ message: "Internal server error" });
