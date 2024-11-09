@@ -47,11 +47,26 @@ const filterReducer = (state, action) => {
       };
     }
 
+    case "HANDLE_PAGE": {
+      const { value } = action.payload;
+      const { page } = state;
+      let newPage;
+      if (value === "next") {
+        newPage = page + 1;
+      } else {
+        newPage = page - 1;
+      }
+      return {
+        ...state,
+        page: newPage,
+      };
+    }
+
     case "FILTER_PRODUCTS": {
       const { text, category, company, price } = state.filters;
       const { all_Products } = state;
-      let newProductsList = [...all_Products];
 
+      let newProductsList = [...all_Products];
       if (text) {
         newProductsList = newProductsList.filter((currElem) =>
           currElem.name.toLowerCase().includes(text.toLowerCase())
@@ -79,6 +94,7 @@ const filterReducer = (state, action) => {
       }
       return {
         ...state,
+        page: 1,
         filter_Products: newProductsList,
       };
     }

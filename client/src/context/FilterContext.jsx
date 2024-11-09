@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import reducer from "../reducer/filterReducer";
 import { useProductContext } from "./ProductContext";
 
@@ -9,6 +15,7 @@ const initialState = {
   all_Products: [],
   gridview: true,
   sorting_value: "lowToHigh",
+  page: 1,
   filters: {
     text: "",
     category: "All",
@@ -24,6 +31,7 @@ const FilterProvider = ({ children }) => {
   const { products } = useProductContext();
 
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     return dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products });
@@ -44,13 +52,17 @@ const FilterProvider = ({ children }) => {
     return dispatch({ type: "UPDATE_FILTER_VALUE", payload: { name, value } });
   };
 
+  const pagination = (value) => {
+    return dispatch({ type: "HANDLE_PAGE", payload: { value, page, setPage } });
+  };
+
   const clearFilter = () => {
     return dispatch({ type: "CLEAR_FILTER" });
   };
 
   return (
     <FilterContext.Provider
-      value={{ ...state, sorting, updateFilterValue, clearFilter }}
+      value={{ ...state, sorting, updateFilterValue, clearFilter, pagination }}
     >
       {children}
     </FilterContext.Provider>

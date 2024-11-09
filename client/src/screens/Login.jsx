@@ -13,8 +13,8 @@ const Login = () => {
 
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
-    email: "",
-    password: "",
+    email: "guestuser@gmail.com",
+    password: "1111",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,6 +74,7 @@ const Login = () => {
               placeholder="example23@emailcom"
               value={loginData.email}
               onChange={handleChange}
+              // defaultValue={"abhinav"}
             />
           </div>
           <div>

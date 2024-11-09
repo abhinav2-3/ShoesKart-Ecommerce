@@ -7,6 +7,7 @@ import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import { MdOutlineSecurity } from "react-icons/md";
 import Rating from "../components/Rating";
 import AddToCart from "../components/AddToCart";
+import Loader from "../components/Loader";
 
 const SingleProduct = () => {
   const { state } = useLocation();
@@ -16,6 +17,7 @@ const SingleProduct = () => {
   useEffect(() => {
     setLoading(false);
   }, []);
+
   const {
     name,
     price,
@@ -29,19 +31,7 @@ const SingleProduct = () => {
   } = productData;
 
   if (loading) {
-    return (
-      <div
-        style={{
-          width: "100%",
-          height: "10vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        Loading.....
-      </div>
-    );
+    return <Loader />;
   }
   return (
     <section className="single_product">

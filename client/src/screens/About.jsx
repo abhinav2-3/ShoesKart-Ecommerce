@@ -1,12 +1,10 @@
 import Herosection from "../components/Herosection";
 
 const About = () => {
-  const data = {
-    name: "ShoesKart Ecommerce",
-  };
+  const name = "ShoesKart Ecommerce";
   return (
     <div className="home">
-      <Herosection myData={data} />
+      <Herosection myData={name} />
     </div>
   );
 };

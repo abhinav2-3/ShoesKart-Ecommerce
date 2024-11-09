@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useFilterContext } from "../context/FilterContext";
 import Product from "./Product";
 import Loader from "./Loader";
@@ -6,9 +5,8 @@ import Pagination from "./Pagination";
 import { useProductContext } from "../context/ProductContext";
 
 const ProductList = () => {
-  const { filter_Products } = useFilterContext();
+  const { filter_Products, page } = useFilterContext();
   const { isLoading } = useProductContext();
-  const [page, setPage] = useState(1);
 
   if (!isLoading && filter_Products.length === 0) {
     return <div className="productList">No Shoes Aviablable</div>;
@@ -20,10 +18,10 @@ const ProductList = () => {
     <>
       <div className="productList">
         {filter_Products.slice(page * 9 - 9, page * 9).map((item) => {
-          return <Product key={item.id} {...item} />;
+          return <Product key={item._id} {...item} />;
         })}
       </div>
-      <Pagination page={page} setPage={setPage} products={filter_Products} />
+      <Pagination page={page} productsLength={filter_Products?.length} />
     </>
   );
 };

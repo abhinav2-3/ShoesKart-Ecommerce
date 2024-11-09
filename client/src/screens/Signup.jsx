@@ -131,7 +131,7 @@ const Signup = () => {
               onClick={handleSignUp}
               disabled={loading}
             >
-              Login
+              Signup
             </button>
           )}
         </aside>

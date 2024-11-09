@@ -14,7 +14,7 @@ const FeaturedProducts = () => {
       ) : (
         <div>
           {featureProducts.map((item) => {
-            return <Product key={item.id} {...item} />;
+            return <Product key={item._id} {...item} />;
           })}
         </div>
       )}

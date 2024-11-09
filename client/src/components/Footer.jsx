@@ -1,6 +1,5 @@
-import React from "react";
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import GetStartButton from "./GetStartButton";
 
 const Footer = () => {
   return (
@@ -9,9 +8,7 @@ const Footer = () => {
         <p>
           Ready to get Started ? <br /> Talk to us today
         </p>
-        <NavLink to={"/login"} className="btn">
-          Get Started
-        </NavLink>
+        <GetStartButton />
       </div>
       <section>
         <aside>

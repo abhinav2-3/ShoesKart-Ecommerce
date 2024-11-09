@@ -15,7 +15,7 @@ const Product = (item) => {
     Array.isArray(image) && image.length > 0 ? image[0] : null;
 
   return (
-    <div onClick={handleNavigate} className="navProduct" state={item}>
+    <div onClick={handleNavigate} className="navProduct">
       <figure>
         <img src={firstImageUrl} alt={name} />
         <figcaption>{category}</figcaption>

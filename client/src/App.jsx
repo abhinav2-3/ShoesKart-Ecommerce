@@ -19,10 +19,7 @@ import Admin from "./screens/AddProduct";
 
 function App() {
   const notify = () =>
-    toast.loading(
-      "Please wait a moment while we fetch the data from server. Thank you for your patience.",
-      { duration: 5000 }
-    );
+    toast.loading("Please wait a moment", { duration: 2000 });
 
   useEffect(() => {
     notify();
