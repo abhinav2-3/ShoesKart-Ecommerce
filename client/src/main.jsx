@@ -4,6 +4,7 @@ import App from "./App.jsx";
 import { AppProvider } from "./context/ProductContext.jsx";
 import { FilterProvider } from "./context/FilterContext.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
+import { Analytics } from "@vercel/analytics/react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AppProvider>
@@ -11,6 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <CartProvider>
         <React.StrictMode>
           <App />
+          <Analytics />
         </React.StrictMode>
       </CartProvider>
     </FilterProvider>

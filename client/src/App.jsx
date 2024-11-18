@@ -2,7 +2,6 @@ import "./styles/App.scss";
 import { useEffect, Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
-import { Analytics } from "@vercel/analytics/react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
@@ -30,7 +29,6 @@ function App() {
 
   return (
     <Router>
-      <Analytics />
       <Toaster />
       <Header />
       <Suspense fallback={<Loader />}>
